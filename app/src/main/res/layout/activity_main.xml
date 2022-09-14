@@ -6,13 +6,179 @@
   android:layout_height="match_parent"
   tools:context=".MainActivity">
 
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Hello World!"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/appBar">
+
+      <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/txtToolbarTitle"
+          android:layout_centerHorizontal="true"
+          android:layout_gravity="center_horizontal"
+          android:text="@string/app_name"
+          android:textColor="@color/white"
+          android:textSize="@dimen/titleTextSize"
+          android:textStyle="bold"/>
+
+        <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@id/txtToolbarTitle"
+          android:layout_centerHorizontal="true"
+          android:layout_marginTop="4dp"
+          android:orientation="horizontal">
+
+          <ImageView
+            android:layout_width="19dp"
+            android:layout_height="19dp"
+            android:id="@+id/imgConnectionDot"
+            android:src="@drawable/ic_circle_red"/>
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtStatus"/>
+
+        </LinearLayout>
+
+      </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+      android:id="@+id/mainScreen"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_below="@id/appBar"
+      android:orientation="vertical"
+      android:weightSum="5">
+
+      <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.2">
+
+        <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+
+          <LinearLayout
+            android:id="@+id/pairedContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+              android:id="@+id/txtHeaderLabelPaired"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="8dp"
+              android:layout_marginStart="32dp"
+              android:layout_marginTop="16dp"
+              android:text="@string/paired_devices"
+              android:textColor="@color/colorPrimaryText"
+              android:textStyle="bold"
+              android:visibility="gone"/>
+            
+            <androidx.recyclerview.widget.RecyclerView
+              android:id="@+id/recyclerPairedView"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+          </LinearLayout>
+
+          <LinearLayout
+            android:id="@+id/headerLabelContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/pairedContainer">
+
+            <TextView
+              android:id="@+id/txtHeaderLabel"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginEnd="8dp"
+              android:layout_marginStart="32dp"
+              android:layout_marginTop="16dp"
+              android:text="@string/searching"
+              android:textColor="@color/colorPrimaryText"
+              android:textStyle="bold"/>
+
+            <ProgressBar
+              android:id="@+id/progressBar"
+              android:layout_width="18dp"
+              android:layout_height="18dp"
+              android:layout_marginTop="16dp"
+              android:visibility="gone"/>
+
+          </LinearLayout>
+
+          <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/headerLabelContainer"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        </RelativeLayout>
+
+      </androidx.core.widget.NestedScrollView>
+
+      <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8"
+        android:weightSum="2">
+
+        <Button
+          android:layout_width="0dp"
+          android:layout_height="@dimen/buttonHeight"
+          android:layout_weight="1"
+          android:layout_marginTop="10dp"
+          android:layout_marginBottom="10dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="32dp"
+          android:background="@drawable/selectable_background"
+          android:text="@string/search_devices"
+          android:textAllCaps="false"
+          android:textColor="@color/colorAccent"
+          android:textStyle="bold"
+          tools:ignore="NestedWeights" />
+
+        <Button
+          android:layout_width="0dp"
+          android:layout_height="@dimen/buttonHeight"
+          android:layout_marginBottom="10dp"
+          android:layout_marginTop="10dp"
+          android:layout_marginEnd="32dp"
+          android:layout_weight="1"
+          android:background="@drawable/selectable_background"
+          android:text="@string/make_discoverable"
+          android:textAllCaps="false"
+          android:textColor="@color/colorAccent"
+          android:textStyle="bold"/>
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+  </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
