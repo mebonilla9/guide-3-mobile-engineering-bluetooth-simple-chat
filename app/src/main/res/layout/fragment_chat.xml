@@ -7,7 +7,7 @@
   android:focusableInTouchMode="true"
   android:clickable="true"
   android:focusable="true"
-  tools:context=".ChatFragment">
+  tools:context=".application.fragments.ChatFragment">
 
   <RelativeLayout
     android:id="@+id/chatLayoutContainer"

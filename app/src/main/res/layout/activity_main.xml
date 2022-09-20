@@ -132,6 +132,7 @@
           </LinearLayout>
 
           <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/headerLabelContainer"
@@ -148,6 +149,7 @@
         android:weightSum="2">
 
         <Button
+          android:id="@+id/btnSearchDevices"
           android:layout_width="0dp"
           android:layout_height="@dimen/buttonHeight"
           android:layout_weight="1"
@@ -163,6 +165,7 @@
           tools:ignore="NestedWeights" />
 
         <Button
+          android:id="@+id/btnMakeVisible"
           android:layout_width="0dp"
           android:layout_height="@dimen/buttonHeight"
           android:layout_marginBottom="10dp"
